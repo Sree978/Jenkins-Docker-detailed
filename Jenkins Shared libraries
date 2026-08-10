@@ -1,0 +1,36 @@
+way to keep common pipeline code, we will store central git repo will re use across many Jenkins pipeline.
+“Jenkins Shared Library is a way to centralize and reuse common Jenkins pipeline code across multiple projects. 
+Instead of maintaining the same Jenkinsfile logic in every application repository, we keep reusable Groovy functions 
+in a centralized Git repository and import them into Jenkins pipelines.”
+
+“In my projects, we used Shared Libraries for common CI/CD activities such as Git checkout, Maven builds, SonarQube
+analysis, Docker image building, Trivy scanning, pushing images to ECR, and Kubernetes deployment.”
+
+“For example, we had a common buildDockerImage() function and deployToEKS() function in the shared library. Application 
+teams only needed a small Jenkinsfile and passed parameters such as application name, Docker tag, ECR repository, and
+Kubernetes namespace.”
+
+“This helped us avoid duplicate pipeline code, maintain standard CI/CD practices, and make changes centrally. If we 
+needed to modify the Docker scanning or deployment logic, we could update the shared library instead of changing every 
+application's Jenkinsfile.”
+
+Jenkins Shared Library Repository
+│
+├── vars/
+│   ├── buildApp.groovy
+│   ├── dockerBuild.groovy
+│   ├── dockerScan.groovy
+│   └── deployToEKS.groovy
+│
+├── src/
+│   └── com/company/devops/
+│       └── KubernetesUtils.groovy
+│
+└── resources/
+    └── deployment-template.yaml
+
+Strong real-world example
+
+“Suppose we have 30 microservices. Without Shared Libraries, each Jenkinsfile may contain 100–200 lines of repeated Docker, SonarQube, security scanning and Kubernetes deployment logic. With a Shared Library, we move that common logic into reusable functions. Each microservice Jenkinsfile might only have 30–40 lines. If our security team changes the Trivy scanning requirement, we update the shared function once and all pipelines can use the updated implementation.”
+
+This is the kind of answer that sounds like someone with p

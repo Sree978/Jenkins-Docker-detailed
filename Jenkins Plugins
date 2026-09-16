@@ -1,0 +1,20 @@
+| **Pipeline Stage**            | **Tool / Jenkins Plugin**                | **Purpose**                                            |
+| ----------------------------- | ---------------------------------------- | ------------------------------------------------------ |
+| **1. Git Checkout**           | Git Plugin                               | Checkout source code from Git repository               |
+| **2. GitLab Webhook**         | GitLab Plugin                            | Trigger Jenkins pipeline when code is pushed           |
+| **3. Pipeline**               | Pipeline Plugin                          | Define and execute CI/CD pipeline as code              |
+| **4. Build**                  | Maven / Maven Integration                | Compile and package the application                    |
+| **5. Test**                   | JUnit Plugin                             | Execute and publish unit test results                  |
+| **6. Code Quality**           | SonarQube Scanner for Jenkins            | Perform code-quality and static-code analysis          |
+| **7. Credentials**            | Credentials Plugin / Credentials Binding | Securely manage and inject credentials                 |
+| **8. Docker Build**           | Docker Pipeline Plugin                   | Build and manage Docker images from Jenkins            |
+| **9. Security Scan**          | OWASP / Trivy                            | Scan dependencies or Docker images for vulnerabilities |
+| **10. AWS Authentication**    | AWS Credentials Plugin / IAM Role        | Authenticate Jenkins with AWS                          |
+| **11. ECR**                   | AWS CLI                                  | Login to ECR and push Docker images                    |
+| **12. EKS Connection**        | AWS CLI + kubectl                        | Authenticate/connect Jenkins to EKS                    |
+| **13. Kubernetes Deployment** | kubectl / Kubernetes CLI Plugin          | Deploy and manage Kubernetes resources                 |
+| **14. Helm Deployment**       | Helm CLI                                 | Deploy/upgrade applications using Helm charts          |
+| **15. Verification**          | kubectl                                  | Check Pods, Services and rollout status                |
+| **16. Rollback**              | kubectl / Helm                           | Roll back failed deployments                           |
+| **17. Monitoring**            | Prometheus / Grafana                     | Monitor application and Kubernetes health              |
+| **18. Notification**          | Slack / Email Extension Plugin           | Notify team about pipeline success/failure             |
